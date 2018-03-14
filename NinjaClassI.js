@@ -29,3 +29,9 @@ ninja1.showStats();
 ninja1.drinkSake().showStats()
 const ninja2 = new Ninja("Ducati");
 ninja2.showStats();
+console.log(ninja1.showStats)
+ninja1.showStats = function(){
+    console.log("hello")
+}
+
+ninja1.showStats()
