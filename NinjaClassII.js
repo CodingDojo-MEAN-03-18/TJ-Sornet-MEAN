@@ -29,8 +29,9 @@ function Ninja(name){
 
     this.kick = function(ninja){
         if(ninja instanceof Ninja){
-            ninja.health -= 15;
-            console.log(ninja.name + " was kicked by " + this.name + " and lost 15 Health!")
+            const hit = 15*strength
+            ninja.health -= hit;
+            console.log(ninja.name + " was kicked by " + this.name + " and lost " + hit + " Health!")
         } else {
             console.log("Error: argument is not an instance of Ninja")
         }
