@@ -44,10 +44,7 @@
             return this;
         }
         deal(){
-            let index = Math.floor(Math.random() * this.cards.length)
-            let randomCard = this.cards[index]
-            this.cards.splice(index, 1)
-            return randomCard;
+            return this.cards.pop();
         }
     }
 
@@ -60,7 +57,7 @@
         takeCard(deck){
             let card = deck.deal();
             this.hand.push(card)
-            return card;
+            return this;
         }
 
         discard(card){
@@ -68,12 +65,13 @@
             if (index > -1 ){
                 this.hand.splice(index, 1);
             }
+            return this;
         }
 
     }
 
     const newDeck = new Deck()
-
+    newDeck.shuffle()
     const player1 = new Player("TJ")
     console.log(player1.takeCard(newDeck))
     console.log(player1.takeCard(newDeck))
