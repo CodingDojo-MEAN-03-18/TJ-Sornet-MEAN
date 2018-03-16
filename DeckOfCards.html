@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Deck of Cards</title>
+</head>
+<body>
+    
+</body>
+<script>
+    class Deck{
+        constructor(){
+            this.cards = [
+                "A-Sp", "2-Sp", "3-Sp", "4-Sp", "5-Sp", "6-Sp", "7-Sp", "8-Sp", "9-Sp", "10-Sp", "J-Sp", "Q-Sp", "K-Sp",
+                "A-Di", "2-Di", "3-Di", "4-Di", "5-Di", "6-Di", "7-Di", "8-Di", "9-Di", "10-Di", "J-Di", "Q-Di", "K-Di",
+                "A-He", "2-He", "3-He", "4-He", "5-He", "6-He", "7-He", "8-He", "9-He", "10-He", "J-He", "Q-He", "K-He",
+                "A-Fl", "2-Fl", "3-Fl", "4-Fl", "5-Fl", "6-Fl", "7-Fl", "8-Fl", "9-Fl", "10-Fl", "J-Fl", "Q-Fl", "K-Fl",
+            ];
+        }
+        shuffle(){
+            var m = this.cards.length, t, i;
+            // While there remain elements to shuffle…
+            while (m) {
+                // Pick a remaining element…
+                i = Math.floor(Math.random() * m--);
+
+                // And swap it with the current element.
+                t = this.cards[m];
+                this.cards[m] = this.cards[i];
+                this.cards[i] = t;
+            }
+            return this;
+        }
+        reset(){
+            this.cards = [
+                "A-Sp", "2-Sp", "3-Sp", "4-Sp", "5-Sp", "6-Sp", "7-Sp", "8-Sp", "9-Sp", "10-Sp", "J-Sp", "Q-Sp", "K-Sp",
+                "A-Di", "2-Di", "3-Di", "4-Di", "5-Di", "6-Di", "7-Di", "8-Di", "9-Di", "10-Di", "J-Di", "Q-Di", "K-Di",
+                "A-He", "2-He", "3-He", "4-He", "5-He", "6-He", "7-He", "8-He", "9-He", "10-He", "J-He", "Q-He", "K-He",
+                "A-Fl", "2-Fl", "3-Fl", "4-Fl", "5-Fl", "6-Fl", "7-Fl", "8-Fl", "9-Fl", "10-Fl", "J-Fl", "Q-Fl", "K-Fl",
+            ];
+
+            return this;
+        }
+        deal(){
+            let index = Math.floor(Math.random() * this.cards.length)
+            let randomCard = this.cards[index]
+            this.cards.splice(index, 1)
+            return randomCard;
+        }
+    }
+
+    class Player{
+        constructor(name){
+            this.name = name;
+            this.hand = [];
+        }
+
+        takeCard(deck){
+            let card = deck.deal();
+            this.hand.push(card)
+            return card;
+        }
+
+        discard(card){
+            var index = this.hand.indexOf(card);
+            if (index > -1 ){
+                this.hand.splice(index, 1);
+            }
+        }
+
+    }
+
+    const newDeck = new Deck()
+
+    const player1 = new Player("TJ")
+    console.log(player1.takeCard(newDeck))
+    console.log(player1.takeCard(newDeck))
+    console.log(player1.takeCard(newDeck))
+    console.log(player1.hand)
+    console.log(player1.hand)
+</script>
+</html>
