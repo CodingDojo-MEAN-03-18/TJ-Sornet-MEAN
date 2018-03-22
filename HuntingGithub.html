@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>Hunting Github</title>
+    <script>
+        $(document).ready(function(){
+            
+
+            $('button').click(function(){
+                $.get("https://api.github.com/users/tj3407", displayName)
+                // Notice that displayName is a function that takes in 1 parameter (this is the data that comes back from the API)
+                function displayName(data) {
+                    $("#display").html('<h1>Github Name: ' + data.login + "</h1>")
+                }
+
+                
+            })
+        })
+    </script>
+    <style>
+        button {
+            width: 150px;
+            height: 30px;
+            margin: 30px;
+            box-shadow: 2px 2px black;
+            background-color: blue;
+            color: white;
+        }
+
+        h1 {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <center>
+            <button id="displayName">Display Github Name</button>
+            <div id="display"></div>
+        </center>
+    </div>
+    
+</body>
+</html>
