@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>Dojo Query</title>
+</head>
+<body>
+    <center>
+        <h1 id="click">Click Me</h1>
+        <h1 id="hover">Move Mouse Here</h1>
+        <div id="space"></div>
+    </center>
+</body>
+<script>
+        function $Dojo(htmlId) {
+            this.id = document.getElementById(htmlId);
+            this.click = function (cb) {
+                this.id.addEventListener("click", cb);
+            };
+
+            this.hover = function (hoverin, hoverout) {
+                this.id.addEventListener("mouseover", hoverin);
+                this.id.addEventListener("mouseout", hoverout);
+            };
+
+            return this;
+        };
+
+        $Dojo("click").click(function(){
+            alert("Thanks for clicking me!");
+        })
+        $Dojo("hover").hover(function(){
+            $(this).css('color', 'red');
+            console.log("Changed text color to red!");
+        })
+</script>
+</html>
