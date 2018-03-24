@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Game of Thrones</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $('img').click(function(){
+                    $.get("https://anapioficeandfire.com/api/houses/"+$(this).attr('id')+"/", function(data){
+                        var htmlStr = "";
+                        htmlStr += "<h3>Name: " + data.name + "</h3>";
+                        htmlStr += "<h3>Words: " + data.words + "</h3>";
+                        htmlStr += "<p>Titles: ";
+                        for(var i=0; i< data.titles.length; i++)
+                            htmlStr += data.titles[i] + ",";
+                        htmlStr += '</p>';
+                        $("#info").html(htmlStr);
+                    }, 'json')
+                })
+            })
+        </script>
+        <style>
+            #container {
+                width: 1024px;
+            }
+            img {
+                display: inline-block;
+                width: 200px;
+                vertical-align: top;
+                margin-right: 20px;
+            }
+            #houses {
+                text-align: center;
+                padding-top: 50px;
+            }
+            h1 {
+                text-align: center;
+            }
+            h2,#info {
+                padding-left: 50px;
+                margin-left: 80px;
+            }
+            #info {
+                border: 1px solid black; 
+                width: 800px;
+                margin-left: 80px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <h1>Game of Thrones</h1>
+            <div id="houses">
+                <img id="362" src="./gameofthrones/stark.jpg" alt="House Stark">
+                <img id="229" src="./gameofthrones/lannister.jpg" alt="House Lannister">
+                <img id="17" src="./gameofthrones/baratheon.png" alt="House Baratheon">
+                <img id="378" src="./gameofthrones/targaryen.jpg" alt="House Targaryen">                   
+            </div>
+            <h2>House Details</h2>
+            <div id="infoContainer">
+                <div id="info">
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
