@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Pokedex</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                //retrieve images for display
+                for(var i=1; i <= 151; i++){
+                    $('#images').append('<img id="' + i + '" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + i + '.png" alt="">');
+                }
+                //get data from API on click
+                $('img').click(function(){
+                    $.get("https://pokeapi.co/api/v2/pokemon/"+ $(this).attr('id') +'/' , function(data){
+                        var htmlStr = "";
+                        htmlStr += '<h2>' + data.name + '</h2>';
+                        htmlStr += "<img src='" + data.sprites.front_default + "'>";
+                        htmlStr += '<h4>Types</h4>';
+                        htmlStr += '<ul>';
+                        for(var idx=0; idx < data.types.length; idx++){
+                            htmlStr += '<li>' + data.types[idx].type.name + '</li>';
+                        }
+                        htmlStr += '</ul>';
+                        htmlStr += '<h4>Height</h4>';
+                        htmlStr += '<p>' + data.height + '</p>';
+                        htmlStr += '<h4>Weight</h4>';
+                        htmlStr += '<p>' + data.weight + '</p>';
+                        $('#details').html(htmlStr);
+                    }, 'json');
+
+                })
+            }) 
+        </script>
+        <style>
+            * {
+                width: 970px;
+            }
+            img {
+                width: 100px;
+                height: 100px;
+                display: inline-block;
+                vertical-align: top;
+            }
+            #images {
+                width: 650px;
+                display: inline-block;
+                vertical-align: top;
+            }
+            #details {
+                width: 250px;
+                height: 450px;
+                display: inline-block;
+                vertical-align: top;
+                border: 5px solid red;
+                padding-left: 40px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <div id="images">
+            </div>
+            <div id="details">
+            </div>          
+        </div>
+    </body>
+</html>
