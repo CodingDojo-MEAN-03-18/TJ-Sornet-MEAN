@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Weather Forecast</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('form').submit(function() {
+                    return false;
+                })
+                $('button').click(function(){
+                    var city = $("#city").val();
+                    $.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&&appid=fbce7df393a3e510aa1b6814249ea5f0', function(res) {
+                        var html = "";
+                        var fahrenheit = Math.round(res.main.temp * (9/5) - 459.67);
+                        html += "<h1>" + res.name + "</h1>";
+                        html += "<h4>Temperature: " + fahrenheit + '</h4>';
+                        $('#weather').html(html);
+                    }, 'json');
+                    $('input').val('');
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <h1>Weather Forecast App</h1>
+        <div>
+            <form action="process.php" method="post">
+                <input type="text" name="city" id="city" placeholder="Enter City">    
+            </form>
+            <p></p><button>Search Weather</button>
+        </div>
+        <div id="weather">
+        </div>
+    </body>
+</html>
