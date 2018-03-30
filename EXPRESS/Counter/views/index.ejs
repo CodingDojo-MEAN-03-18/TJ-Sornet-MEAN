@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Counter</title>
+</head>
+<body>
+    <center>
+        <div>
+            <h1>Counter</h1>
+            <p><%= count %> times</p>
+            <form action="/process" method="post">
+                <input type="hidden" name="action" value="increment">
+                <input type="submit" value="INCREMENT BY 2">
+            </form>
+            <form action="/process" method="post">
+                <input type="hidden" name="action" value="reset">
+                <input type="submit" value="RESET">
+            </form>
+            
+        </div>
+    </center>
+</body>
+</html>
