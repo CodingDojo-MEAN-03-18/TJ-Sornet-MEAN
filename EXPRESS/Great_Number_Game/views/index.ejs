@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Great Numbers Game</title>
+    <style>
+        div {
+            text-align: center;
+        }
+
+        #red {
+            display: inline-block;
+            vertical-align: middle;
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+            background-color: red;
+            color: white;
+        }
+
+        #green {
+            display: inline-block;
+            vertical-align: middle;
+            width: 200px;
+            height: 200px;
+            background-color: green;
+            color: white;
+        }
+        input {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <div>
+                <h1>Welcome to the Great Number Game!</h1>
+                <p>I am thinking of a number between 1 and 100</p>
+                <p>Take a guess!</p>
+                <% if (compNum != player_guess) { %>
+                    <% if (player_guess != undefined) { %>
+                        <div id="red">
+                            <p><%= message %></p>
+                        </div>
+                    <% } %>
+                    <p></p>
+                    <form action="/process" method="post">
+                        <input type="text" name="guessnumber">
+                        <input type="submit" value="Guess!">
+                    </form> 
+                <% } else { %>
+                    <div id="green">
+                        <p id="greenp"><%= player_guess %> was the number!</p>
+                        <form action="/playagain" method="post">
+                            <input type="submit" value="Play Again?">
+                        </form>
+                    </div>
+                <% } %>
+                
+            </div>
+        </center>
+</body>
+</html>
