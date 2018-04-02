@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <title>Epic Button Game</title>
+    <script>
+        $(document).ready(function(){
+            var socket = io.connect();
+            socket.on('buttonSubmitted', function(num){
+                $('#number').text(num);
+            });
+            $("#increment").click(function(){
+                socket.emit('incrementClicked');
+            });
+            $('#reset').click(function(){
+                socket.emit('resetClicked');
+            });
+
+        });
+    
+    </script>
+</head>
+<body>
+    <center>
+    <div id="container">
+        <h1>The button has been pushed <span id="number">0</span> times(s)</h1>
+        <p>Push the button to update the count!</p>
+        <button class="btn btn-primary" id="increment">Push the epic button</button>
+        <button class="btn btn-danger push-right" id="reset">Reset count</button>
+    </div>
+    </center>
+</body>
+</html>
