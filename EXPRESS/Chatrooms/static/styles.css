@@ -1,0 +1,22 @@
+#container {
+    width: 980px;
+    padding: 50px;
+}
+fieldset {
+    width: 400px;
+}
+.card {
+    margin-bottom: 30px;
+}
+#chat_area {
+    height: 400px;
+    width: 100%;
+    border: 2px solid black;
+    margin-bottom: 10px;
+}
+#chat_submit {
+    width: 100%;
+}
+button {
+    float: right;
+}
