@@ -19,14 +19,52 @@ var server = app.listen(8000, function() {
 
 var io = require('socket.io').listen(server);
 
+class User { 
+    constructor (id, name){
+        this.id = id;
+        this.name = name;
+    }
+ }
+
+ class Message {
+     constructor (msg, user){
+        this.content = msg;
+        this.user = user;
+     }
+ }
+
 let num = 0;
+let users = [];
+const messages = [];
+
 io.sockets.on('connection', function (socket) {
     console.log("Client/socket is connected!");
     console.log("Client/socket id is: ", socket.id);
     // all the server socket code goes in here
     socket.on("got_a_new_user", function(name){
-        io.emit('new_user', name);
+        const user = new User(socket.id, name.name);
+        console.log('got new user', user);
+        users.push(user);
+        socket.broadcast.emit('new_user', user);
+        socket.emit('all_users', users);
+        socket.emit('all_messages', messages);
     });
+
+    socket.on('new_message', function(msg){
+        const user = users.find((user) => user.id === socket.id );
+        const message = new Message(msg.msg, user);
+        messages.push(message);
+        io.emit('write_new_message', message);
+        console.log('got new message');
+    });
+
+    socket.on('disconnect', function(){
+        console.log('somebody disconnected');
+        const user = users.find((user) => user.id === socket.id );
+        users = users.filter( possibleUser => possibleUser.id !== user.id );
+        io.emit('remove_user', user);
+    });
+
 
 })
 

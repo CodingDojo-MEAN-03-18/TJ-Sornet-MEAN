@@ -17,13 +17,47 @@
             
             socket.emit("got_a_new_user", {name: name});
             
-            socket.on('new_user', function(name){
-                $('#users').append(`<div class="col-sm-4"><p>${ name.name }</p></div>`);
+            socket.on('new_user', addUser);
+
+            socket.on('all_users', function(users){
+                for(const user of users){
+                    addUser(user);
+                }
             });
-            
+
+            function addUser(user){
+                $('#users').append(`<div class="col-sm-4" id="${ user.id }"><p>${ user.name }</p></div>`);
+            }
+
             socket.on('disconnect_user', function(){
 
             });
+
+            $('button').click(function(e){
+                e.preventDefault();
+                console.log('capture button click')
+                var msg = $('#message').val();
+                console.log(msg);
+                socket.emit('new_message', {msg: msg});
+                $('#message').val('');
+            });
+
+            socket.on('write_new_message', writeMessage);
+
+            socket.on('all_messages', function(messages){
+                for(const message of messages){
+                    writeMessage(message);
+                };
+            });
+
+            function writeMessage(message){
+                $('#chat_area').append(`<p> ${message.user.name}: ${message.content} </p>`);
+            };
+
+            socket.on('remove_user', function(user){
+                $(`#${user.id}`).remove();
+            });
+
         });
     </script>
 </head>
@@ -34,17 +68,15 @@
             <div class="col-sm-2">
                 <p>USERS</p>
                 <div id="users">
-
+                
                 </div>
             </div>
             <div class="col-sm-10">
                 <p>CONVERSATION BOARD</p>
                 <div id="chat_area"></div>
                 <div id="chat_submit">
-                    <form action="" method="">
-                        <p><input type="text" id="message" style="width: 100%;"></p>
-                        <button class="btn btn-primary">Send</button>
-                    </form>
+                    <p><input type="text" id="message" style="width: 100%;"></p>
+                    <button class="btn btn-primary">Send</button>
                 </div>
             </div>
         </div>
