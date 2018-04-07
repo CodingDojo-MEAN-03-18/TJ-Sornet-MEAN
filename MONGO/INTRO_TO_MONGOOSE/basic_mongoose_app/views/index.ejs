@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Basic Mongoose App</title>
+</head>
+<body>
+    <div id="container">
+        <form action="/users" method="post">
+            <p>Name: <input type="text" name="name"></p>
+            <p>Age: <input type="number" name="age"></p>
+            <button>Submit</button>
+        </form>
+        <% for(user in users) { %>
+            <p>Name: <%= users[user].name %></p>
+            <p>Age: <%= users[user].age %></p>
+        <% } %>
+    </div>
+</body>
+</html>
