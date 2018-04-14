@@ -1,0 +1,11 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="container">
+  <h1>{{ title }}</h1>
+  <button [ngClass]="{'btn': true, 'btn-warning': yellowpst, 'btn-secondary': graypst}" (click)="onClick('pst')">PST</button>
+  <button [ngClass]="{'btn': true, 'btn-warning': yellowmst, 'btn-secondary': graymst}" (click)="onClick('mst')">MST</button>
+  <button [ngClass]="{'btn': true, 'btn-warning': yellowcst, 'btn-secondary': graycst}" (click)="onClick('cst')">CST</button>
+  <button [ngClass]="{'btn': true, 'btn-warning': yellowest, 'btn-secondary': grayest}" (click)="onClick('est')">EST</button>
+  <button [ngClass]="{'btn': true, 'btn-warning': yellowclear, 'btn-secondary': grayclear}" (click)="onClick('clear')">Clear</button>
+  <h3 id="dateTime"></h3>
+</div>
+
