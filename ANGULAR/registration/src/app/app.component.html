@@ -1,0 +1,162 @@
+<div class="container">
+  <h1>{{ title }}</h1>
+  <div id="message" *ngIf="submitted">
+    <p>Thank you for registering with us {{ users[0].firstName }}. We just sent you
+    a confirmation email at {{ users[0].email }}, and we will send all mail to
+    {{ users[0].street }}, {{ users[0].city }} {{ users[0].state }}.</p>
+    <p>Have a wonderful day!</p>
+  </div>
+
+  <form (submit)="userForm.valid && onSubmit($event, userForm)" #userForm='ngForm'>
+    <fieldset>
+      <h2>Account Information</h2>
+      <div>
+        <label>*First Name: </label>
+        <input type='text' name='firstName'
+          [(ngModel)]='user.firstName'
+          #firstName='ngModel'
+          required>
+        <div class="red" *ngIf='(firstName.touched) && firstName.errors'>
+          <div class="red" *ngIf='firstName.errors.required'>
+            First Name is required.
+          </div>
+        </div>
+      </div>
+      <div>
+        <label>*Last Name: </label>
+        <input
+          type="text"
+          name="lastName"
+          required
+          [(ngModel)]='user.lastName'
+          #lastName="ngModel"
+        >
+        <div class="red" *ngIf='(lastName.touched) && lastName.errors'>
+            <div class="red" *ngIf='lastName.errors.required'>
+              Last Name is required.
+            </div>
+          </div>
+      </div>
+      <div>
+        <label>*Email: </label>
+        <input
+          type="text"
+          name="email"
+          required
+          [(ngModel)]='user.email'
+          #email="ngModel"
+        >
+        <div class="red" *ngIf='(email.touched) && email.errors'>
+            <div class="red" *ngIf='email.errors.required'>
+              Email is required.
+            </div>
+          </div>
+      </div>
+      <div>
+        <label>*Password: </label>
+        <input
+          type="password"
+          name="password"
+          required
+          minlength='16'
+          [(ngModel)]='user.password'
+          #password="ngModel"
+        >
+        <div class="red" *ngIf='(password.touched) && password.errors'>
+            <div class="red" *ngIf='password.errors.required'>
+              Password is required.
+            </div>
+          </div>
+      </div>
+      <div>
+        <label>*Password Confirmation: </label>
+        <input
+          type="password"
+          name="passwordConfirm"
+        >
+      </div>
+      <div>
+        <label>*Street Address: </label>
+        <input
+          type="text"
+          name="street"
+          required
+          [(ngModel)]='user.street'
+          #street="ngModel"
+        >
+        <div class="red" *ngIf='(street.touched) && street.errors'>
+            <div class="red" *ngIf='street.errors.required'>
+              Street is required.
+            </div>
+          </div>
+      </div>
+      <div>
+        <label>Unit/Apt #: </label>
+        <input
+          type="text"
+          name="unit"
+        >
+      </div>
+      <div>
+        <label>*City: </label>
+        <input
+          type="text"
+          name="city"
+          required
+          [(ngModel)]='user.city'
+          #city="ngModel"
+        >
+        <div class="red" *ngIf='(city.touched) && city.errors'>
+            <div class="red" *ngIf='city.errors.required'>
+              City is required.
+            </div>
+          </div>
+      </div>
+      <div>
+        <label>*State: </label>
+        <input
+          type="text"
+          name="state"
+          required
+          [(ngModel)]='user.state'
+          #state="ngModel"
+        >
+        <div class="red" *ngIf='(state.touched) && state.errors'>
+            <div class="red" *ngIf='state.errors.required'>
+              State is required.
+            </div>
+          </div>
+      </div>
+      <div>
+        <label>*I'm feeling lucky: </label>
+        <input
+          type="radio"
+          name="lucky"
+          value="yes"
+          required
+          [(ngModel)]='user.lucky'
+          #lucky="ngModel"
+        >
+        <label>Yes</label>
+        <input
+          type="radio"
+          name="lucky"
+          value="no"
+          required
+          [(ngModel)]='user.lucky'
+          #lucky="ngModel"
+        >
+        <label>No</label>
+        <div class="red" *ngIf='(lucky.touched) && lucky.errors'>
+            <div class="red" *ngIf='lucky.errors.required'>
+              Choosing how you feel is required.
+            </div>
+          </div>
+      </div>
+
+    </fieldset>
+    <button class="btn btn-primary btn-block" *ngIf="userForm.valid">Register</button>
+  </form>
+
+</div>
+
