@@ -1,0 +1,15 @@
+app-alpha-component, app-beta-component {
+  display: inline-block;
+  vertical-align: top;
+  width: 400px;
+  height: 300px;
+  border: 2px solid black;
+  padding: 20px;
+  margin-right: 20px;
+}
+
+#container {
+  border: 2px solid black;
+  padding: 30px;
+  width: 980px;
+}
