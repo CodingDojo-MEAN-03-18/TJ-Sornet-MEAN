@@ -1,0 +1,28 @@
+<div class="container">
+  <h1>{{ title }}</h1>
+  <form (submit)='quoteForm.valid && onSubmit($event, quoteForm)' #quoteForm='ngForm'>
+    <div>
+      <textarea name="quote" [(ngModel)]='entry.quote' cols="50" rows="5" #quote='ngModel' minlength='4' required></textarea>
+      <div class="red" *ngIf='(quote.touched) && quote.errors'>
+        <div class="red" *ngIf='quote.errors.required'>
+          Quote is required.
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <label>Author </label><input type="text" name="author" [(ngModel)]='entry.author' #author='ngModel' minlength='1' required>
+      <div class="red" *ngIf='(author.touched) && author.errors'>
+        <div class="red" *ngIf='author.errors.required'>
+          Author is required.
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-primary" [disabled]="quoteForm.invalid">Add Quote</button>
+  </form>
+  <div id="quoteList">
+    <h1>Quotes List</h1>
+    <app-quotelist [quotes]='quotes' (deleteQuote)='remove($event)'></app-quotelist>
+  </div>
+</div>
+

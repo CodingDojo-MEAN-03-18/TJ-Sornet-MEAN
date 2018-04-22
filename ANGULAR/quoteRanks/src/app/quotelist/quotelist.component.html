@@ -1,0 +1,19 @@
+<div *ngFor='let quote of quotes'>
+  <fieldset>
+    <div class='row'>
+      <div class='col-sm-6'>
+        <p>'{{ quote.quote }}'</p>
+        <p>- {{ quote.author }}</p>
+      </div>
+      <div class='col-sm-3'>
+        <h1>{{ quote.rating }}</h1>
+      </div>
+      <div class='col-sm-3'>
+        <button class='btn btn-success' (click)='up(quote)'>Vote Up</button>
+        <button class='btn btn-danger' (click)='down(quote)'>Vote Down</button>
+        <button class='btn btn-dark' (click)='delete(quote)'>Delete</button>
+      </div>
+    </div>
+  </fieldset>
+
+</div>

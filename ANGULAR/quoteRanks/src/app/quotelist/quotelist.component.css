@@ -1,0 +1,9 @@
+fieldset {
+  border: 1px solid black;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+button {
+  display: block;
+  width: 150px;
+}

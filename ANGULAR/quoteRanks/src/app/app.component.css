@@ -1,0 +1,8 @@
+.red {
+  color: red;
+  display: inline;
+  vertical-align: top;
+}
+#quoteList{
+  margin-top: 50px;
+}
