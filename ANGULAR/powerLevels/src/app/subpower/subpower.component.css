@@ -1,0 +1,9 @@
+fieldset, .subpower {
+  display: inline-block;
+  vertical-align: top;
+  width: 300px;
+  height: 200px;
+  margin: 20px;
+}
+
+

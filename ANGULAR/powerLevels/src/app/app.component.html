@@ -1,0 +1,14 @@
+<div id='container'>
+  <fieldset>
+    <legend>{{ title }}</legend>
+    <form (submit)='onClick($event, powerForm)' #powerForm='ngForm'>
+      <label>Initial Power Level</label><input type="number" name="power" [(ngModel)]='power'>
+      <button>Calculate Powers</button>
+    </form>
+    <div>
+      <app-subpower [powers]='powers'></app-subpower>
+    </div>
+  </fieldset>
+
+</div>
+

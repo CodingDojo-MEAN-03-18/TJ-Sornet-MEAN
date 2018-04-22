@@ -1,0 +1,9 @@
+<div *ngFor='let power of powers' class='subpower'>
+    <fieldset>
+        <legend>{{ power.title }}</legend>
+        <p>Power Level: <span>{{ power.level }}</span></p>
+        <div *ngIf='(power.level > 9000) && (power.level <= 20000)'><h3>Over 9000!</h3></div>
+        <div *ngIf='(power.level > 20000) && (power.level < 50000)'><h3>Superlative!</h3></div>
+        <div *ngIf='(power.level) == 50000'><h3>The One!</h3></div>
+    </fieldset>
+</div>

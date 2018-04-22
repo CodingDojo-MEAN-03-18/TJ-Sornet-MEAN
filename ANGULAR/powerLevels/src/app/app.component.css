@@ -1,0 +1,14 @@
+.power {
+  display: inline-block;
+  vertical-align: top;
+  width: 300px;
+  height: 200px;
+  margin: 50px 0px 30px 0px;
+}
+fieldset {
+  width: 1080px;
+  height: 600px;
+}
+app-subpower, #container {
+  width: 1080px;
+}
