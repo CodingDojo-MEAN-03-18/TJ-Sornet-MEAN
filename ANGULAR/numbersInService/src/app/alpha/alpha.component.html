@@ -1,0 +1,8 @@
+<div class='container'>
+  <button class="btn btn-primary" (click)='getNum("a")'>Generate Sequence 1</button>
+  <div>
+    <ul *ngFor='let num of numbers'>
+      <li>{{ num }}</li>
+    </ul>
+  </div>
+</div>
