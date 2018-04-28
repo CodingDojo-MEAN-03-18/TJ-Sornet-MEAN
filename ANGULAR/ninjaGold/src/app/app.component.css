@@ -1,0 +1,29 @@
+#comp0 {
+  border: 1px solid black;
+  width: 250px;
+  height: 35px;
+  padding: 5px;
+  text-align: center;
+}
+#childComp {
+  border: 1px solid black;
+  height: 35px;
+  padding: 5px;
+  text-align: center;
+  margin-top: 20px;
+}
+#places {
+  border: 1px solid black;
+  padding: 20px;
+}
+#count {
+  border: 1px solid black;
+  width: 250px;
+  padding: 10px;
+}
+.container {
+  padding: 40px;
+}
+app-getcoin {
+  text-align: center;
+}

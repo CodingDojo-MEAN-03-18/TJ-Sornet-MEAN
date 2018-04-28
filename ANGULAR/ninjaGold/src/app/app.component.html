@@ -1,0 +1,27 @@
+<div class='container'>
+  <div id='goldCount'>
+    <div id='comp0'>
+      <p>Component 0</p>
+    </div>
+    <div id='count'>
+      <h3>Gold Count: {{ myGold }}</h3>
+    </div>
+  </div>
+  <div>
+    <div id='childComp'>
+      <p>Component 1</p>
+    </div>
+    <div id='places'>
+      <app-getcoin [buildings]='buildings' (getGoldEvent)='getGoldFromChild($event)'></app-getcoin>
+    </div>
+  </div>
+  <div>
+    <div id='childComp'>
+      <p>Component 2</p>
+    </div>
+    <div id='places'>
+      <app-showcoin></app-showcoin>
+    </div>
+  </div>
+</div>
+

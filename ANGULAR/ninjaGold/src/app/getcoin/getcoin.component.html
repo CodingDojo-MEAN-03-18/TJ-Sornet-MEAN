@@ -1,0 +1,5 @@
+<div id='places' *ngFor='let building of buildings'>
+  <h2>{{ building.type }}</h2>
+  <p>{{ building.description }}</p>
+  <button class="btn btn-primary" (click)='getGold(building.type)'>{{ building.type }}!</button>
+</div>
