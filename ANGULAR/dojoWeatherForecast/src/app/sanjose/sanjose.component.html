@@ -1,0 +1,19 @@
+<div class='row'>
+  <div class='col-sm'>
+    <h1>San Jose, CA</h1>
+  </div>
+</div>
+<div class='container'>
+  <div class='row'>
+    <div class='col-sm'>
+      <p>Humidity: {{ city.main.humidity }}</p>
+      <p>Temperature (Average): {{ city.main.temp | convertToFah }}</p>
+      <p>Temperature (High): {{ city.main.temp_max | convertToFah }}</p>
+      <p>Temperature (Low): {{ city.main.temp_min | convertToFah }}</p>
+      <p>Status: {{ city.weather[0].description }}</p>
+    </div>
+    <div class='col-sm'>
+      <img src='https://images.pexels.com/photos/462331/pexels-photo-462331.jpeg'>
+    </div>
+  </div>
+</div>
