@@ -1,0 +1,7 @@
+<h1 *ngIf='user.followers + user.public_repos'>Your Score: {{ user.followers + user.public_repos }}</h1>
+<h3 id='red' *ngIf='(user.followers + user.public_repos) < 20'>Needs Work!</h3>
+<h3 id='orange' *ngIf='((user.followers + user.public_repos) >= 20) && ((user.followers + user.public_repos) < 50)'>A decent start!</h3>
+<h3 *ngIf='((user.followers + user.public_repos) >= 50) && ((user.followers + user.public_repos) < 100)'>Doing good!</h3>
+<h3 id='green' *ngIf='((user.followers + user.public_repos) >= 100) && ((user.followers + user.public_repos) < 200)'>Great job!</h3>
+<h3 id='blue' *ngIf='(user.followers + user.public_repos) >= 200'>Github Elite!</h3>
+
