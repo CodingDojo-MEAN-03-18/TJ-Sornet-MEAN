@@ -1,0 +1,14 @@
+<section>
+  <h1>Products List</h1>
+  <div class='container'>
+    <div class="panel panel-default" *ngFor='let product of products'>
+      <div class="panel-body">
+        <img src='{{ product.image }}' height='200' width='200'>
+        <p>{{ product.title }}</p>
+        <p>${{ product.price }}</p>
+        <button class='btn btn-warning' [routerLink]='["edit",product.id]'>EDIT</button>
+        <button class='btn btn-danger' (click)='onDelete(product.id)'>Delete</button>
+      </div>
+    </div>
+  </div>
+</section>

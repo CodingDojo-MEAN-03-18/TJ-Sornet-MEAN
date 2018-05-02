@@ -1,0 +1,37 @@
+<section>
+  <h1>Edit Product</h1>
+  <form (submit)='bookForm.valid && onSubmit($event, bookForm)' #bookForm='ngForm'>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Title</label>
+      <div class="col-sm-10">
+        <input class="form-control" type="text"
+          name="title"
+          [(ngModel)]='product.title'
+          #title='ngModel'
+          required>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Price</label>
+      <div class="col-sm-10">
+        <input class="form-control" type="number"
+          name="price"
+          [(ngModel)]='product.price'
+          #price='ngModel'
+          required>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Image URL</label>
+      <div class="col-sm-10">
+        <input class="form-control" type="text"
+          name="image"
+          [(ngModel)]='product.image'
+          #image='ngModel'
+          required>
+      </div>
+    </div>
+    <button class='btn btn-success float-right' [disabled]='!bookForm.valid'>UPDATE</button>
+  </form>
+  <button class='btn btn-danger float-right' (click)='onDelete()'>Delete</button>
+</section>

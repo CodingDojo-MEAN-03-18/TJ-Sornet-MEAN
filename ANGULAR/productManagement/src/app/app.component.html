@@ -1,0 +1,10 @@
+<div class='container'>
+  <h1>{{ title }}</h1>
+  <a routerLink='/'>Home</a> | <a routerLink='/products'>Product List</a> | <a [routerLink]="['/products','new']">Product Creation</a>
+  <div class='row'>
+    <fieldset>
+      <legend class='scheduler-border'>{{ legend }}</legend>
+      <router-outlet></router-outlet>
+    </fieldset>
+  </div>
+</div>
