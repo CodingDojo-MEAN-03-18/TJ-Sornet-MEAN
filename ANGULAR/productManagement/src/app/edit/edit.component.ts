@@ -12,20 +12,25 @@ import { NgForm } from '@angular/forms';
 })
 export class EditComponent implements OnInit {
   id: number;
-  product: Product = new Product();
+  // product: Product = new Product();
+  product: Product;
   constructor(private _productService: ProductService, private router: Router, private _route: ActivatedRoute) {
-    this._route.paramMap.subscribe( params => {
-      this.id = parseInt(params.get('id'), 10);
-    });
   }
 
   ngOnInit() {
+    this._route.paramMap.subscribe( params => {
+      this.id = parseInt(params.get('id'), 10);
+    });
+    this._productService.getProduct(this.id)
+    .subscribe(prod => this.product = prod);
   }
 
   onSubmit(event: Event, form: NgForm) {
     event.preventDefault();
-    this._productService.updateProduct(this.id, this.product);
-    this.router.navigateByUrl('/products');
+    this._productService.updateProduct(this.product)
+    .subscribe( () => {
+      this.router.navigateByUrl('/products');
+    });
   }
 
   onDelete() {

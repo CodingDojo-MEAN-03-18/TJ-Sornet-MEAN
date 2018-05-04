@@ -12,10 +12,11 @@ export class ListComponent implements OnInit {
   constructor(private _productService: ProductService) { }
 
   ngOnInit() {
-    this.products = this._productService.products;
+    this._productService.getProducts()
+    .subscribe( prod => this.products = prod);
   }
 
-  onDelete(id: number){
+  onDelete(id: number) {
     this._productService.deleteProduct(id);
   }
 
