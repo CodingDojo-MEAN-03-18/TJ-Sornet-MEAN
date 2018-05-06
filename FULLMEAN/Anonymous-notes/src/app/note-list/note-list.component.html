@@ -1,0 +1,6 @@
+<div class="pre-scrollable">
+  <fieldset *ngFor='let note of notes | reverse'>
+    <p id='date'>Noted on: {{ note.createdAt | date: 'medium' }}</p>
+    <p>{{ note.note }}</p>
+  </fieldset>
+</div>

@@ -1,0 +1,15 @@
+<div class='container'>
+  <form class='form-inline' (submit)="onSubmit()">
+    <div class="form-group">
+      <label class="control-label col-sm-2">Note:</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control"
+          name="newNote.note"
+          [(ngModel)]="newNote.note">
+      </div>
+      <div class="col-sm-2">
+        <button type="submit" class="btn btn-success">Add Note</button>
+      </div>
+    </div>
+  </form>
+</div>
