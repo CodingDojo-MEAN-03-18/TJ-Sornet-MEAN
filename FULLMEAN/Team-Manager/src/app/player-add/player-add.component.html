@@ -1,0 +1,25 @@
+<section>
+    <h3><a [routerLink]='["/"]'>List</a> | <a [routerLink]='["/", "players", "addplayer"]'>Add Player</a></h3>
+    <fieldset>
+      <h4>Add Player</h4>
+      <div class='container'>
+        <form (submit)='playerForm.valid && onSubmit($event, playerForm)' #playerForm='ngForm'>
+          <div class='form-group row'>
+            <label class="col-sm-2 col-form-label">Player Name:</label>
+            <div>
+              <input type="text" name="player.name" class="form-control" required [(ngModel)]="player.name" #name="ngModel">
+            </div>
+          </div>
+          <div class='form-group row'>
+            <label class="col-sm-2 col-form-label">Preferred Position:</label>
+            <div>
+              <input type="text" name="player.position" class="form-control" [(ngModel)]="player.position" #position="ngModel">
+            </div>
+          </div>
+          <div class='form-group row'>
+            <button class="btn btn-success col-sm-1 offset-md-3" [disabled]='!playerForm.valid'>ADD</button>
+          </div>
+        </form>
+      </div>
+    </fieldset>
+</section>

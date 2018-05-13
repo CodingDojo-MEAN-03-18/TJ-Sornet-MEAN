@@ -1,0 +1,20 @@
+<section>
+  <h3><a [routerLink]='[""]'>List</a> | <a [routerLink]='["../addplayer"]'>Add Player</a></h3>
+  <table class='table table-striped'>
+    <thead>
+      <tr>
+        <th>Team Name</th>
+        <th>Preferred Position</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let player of players'>
+        <td>{{ player?.name }}</td>
+        <td>{{ player?.position }}</td>
+        <td><button class='btn btn-danger'>DELETE</button></td>
+      </tr>
+    </tbody>
+
+  </table>
+</section>

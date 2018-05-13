@@ -1,0 +1,35 @@
+<section>
+  <h2>Player Status - Game {{ id }}</h2>
+  <div>
+    <h4><a [routerLink]='["/status", "game", "1"]'>Game 1</a> | <a [routerLink]='["/status", "game", "2"]'>Game 2 </a> | <a [routerLink]='["/status", "game", "3"]'>Game 3</a></h4>
+    <table class='table table-striped'>
+      <thead>
+        <tr>
+          <td>Team Name</td>
+          <td>Actions</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor='let player of players'>
+          <td>{{ player?.name }}</td>
+          <td *ngIf='id === "1"'>
+            <button [ngClass]='{"btn": true, "btn-success": player?.status1[0]}' (click)='play(player?._id, "playing", id)'>Playing</button>
+            <button [ngClass]='{"btn": true, "btn-danger": player?.status1[1]}' (click)='play(player?._id, "notPlaying", id)'>Not Playing</button>
+            <button [ngClass]='{"btn": true, "btn-warning": player?.status1[2]}' (click)='play(player?._id, "undecided", id)'>Undecided</button>
+          </td>
+          <td *ngIf='id === "2"'>
+            <button [ngClass]='{"btn": true, "btn-success": player?.status2[0]}' (click)='play(player?._id, "playing", id)'>Playing</button>
+            <button [ngClass]='{"btn": true, "btn-danger": player?.status2[1]}' (click)='play(player?._id, "notPlaying", id)'>Not Playing</button>
+            <button [ngClass]='{"btn": true, "btn-warning": player?.status2[2]}' (click)='play(player?._id, "undecided", id)'>Undecided</button>
+          </td>
+          <td *ngIf='id === "3"'>
+            <button [ngClass]='{"btn": true, "btn-success": player?.status3[0]}' (click)='play(player?._id, "playing", id)'>Playing</button>
+            <button [ngClass]='{"btn": true, "btn-danger": player?.status3[1]}' (click)='play(player?._id, "notPlaying", id)'>Not Playing</button>
+            <button [ngClass]='{"btn": true, "btn-warning": player?.status3[2]}' (click)='play(player?._id, "undecided", id)'>Undecided</button>
+          </td>
+        </tr>
+      </tbody>
+
+    </table>
+  </div>
+</section>
