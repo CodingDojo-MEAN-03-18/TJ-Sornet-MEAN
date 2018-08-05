@@ -2,7 +2,10 @@
 <html lang="en">
     <head>
         <title>Weather Forecast</title>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Bowlby+One+SC" rel="stylesheet">
         <script>
             $(document).ready(function() {
                 $('form').submit(function() {
@@ -21,16 +24,39 @@
                 });
             });
         </script>
+        <style>
+            .container {
+                padding-top: 50px;
+            }
+            body {
+                background-color: black;
+            }
+            #weather {
+                padding: 30px;
+                color: rgb(20, 154, 243);
+            }
+            h1 { 
+                color: rgb(255, 111, 243);
+                font-family: 'Bowlby One SC', cursive;
+                text-shadow: 2px 1px rgb(14, 239, 255);
+                font-size: 3em;
+            }
+            input {
+                margin: 50px 0px 50px 0px;
+            }
+        </style>
     </head>
     <body>
-        <h1>Weather Forecast App</h1>
-        <div>
-            <form action="process.php" method="post">
-                <input type="text" name="city" id="city" placeholder="Enter City">    
-            </form>
-            <p></p><button>Search Weather</button>
-        </div>
-        <div id="weather">
-        </div>
+        <center class="container">
+            <h1>Weather Forecast App</h1>
+            <div>
+                <form action="process.php" method="post">
+                    <input type="text" name="city" id="city" placeholder="Enter City">    
+                </form>
+                <p></p><button class="btn btn-primary">Search Weather</button>
+            </div>
+            <div id="weather">
+            </div>
+        </center>
     </body>
 </html>
